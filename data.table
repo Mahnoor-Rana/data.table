@@ -1,0 +1,14 @@
+library(data.table)
+DF = data.table(x=rnorm(9), y =rep(c("a","b","c"), each = 3),z = rnorm(9))
+head(DF,3)
+tables()
+DF[,list(mean(x),sum(z))]
+DF[,table(y)]
+DF[,w:=z^2]
+DF[,table(z)]
+DF[,a:=x>0]
+DF[,table(a)]
+DT1<- data.table(x =c('a','b','c','dt1'), y = 1:4)
+DT2<-data.table(x =c('a','b','c','dt2'), z =5:7)
+setkey(DT1,x);setkey(DT2,x)
+merge(DT1,DT2)
